@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="rcangular102">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>UI Theme Picker</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="uithemecontroller.js"></script>
+    <style type="text/css">
+        .none {
+            background-color: dodgerblue;
+        }
+
+        .success {
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body ng-controller="uithemecontroller as uitheme"
+      ng-style="uitheme.background">
+<div>
+    <h3>Select a theme</h3>
+    <table>
+        <tr>
+            <td><input type="radio" name="bgcolor" value="none" ng-model="uitheme.bgcolor"
+                       ng-click="uitheme.background={'background-color':'white'}">None
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="bgcolor" value="success" ng-model="uitheme.bgcolor"
+                       ng-click="uitheme.background={'background-color':'lightcyan'}">Success
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="bgcolor" value="sky" ng-model="uitheme.bgcolor"
+                       ng-click="uitheme.background={'background-color':'skyblue'}">Sky
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="bgcolor" value="warning" ng-model="uitheme.bgcolor"
+                       ng-click="uitheme.background={'background-color':'orange'}">Warning
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="bgcolor" value="danger" ng-model="uitheme.bgcolor"
+                       ng-click="uitheme.background={'background-color':'lavender'}">Danger
+            </td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="bgcolor" value="night" ng-model="uitheme.bgcolor"
+                       ng-click="uitheme.background={'background-color':'dodgerblue'}">Night
+            </td>
+        </tr>
+    </table>
+    <table>
+        <div ng-style="{'background-color'  :(uitheme.bgcolor == 'none'     ?   'lightgray'
+                                            : uitheme.bgcolor == 'success'  ?   'lightpink'
+                                            : uitheme.bgcolor == 'sky'      ?   'gold'
+                                            : uitheme.bgcolor == 'warning'  ?   'aquamarine'
+                                            : uitheme.bgcolor == 'danger'   ?   'green'
+                                            : uitheme.bgcolor == 'night'    ?   'yellowgreen'
+                                            : 'red'), 'color': (uitheme.bgcolor == 'none' ? 'black' :'white')}">
+            <h1><span>Hello! I am Div 1</span></h1>
+        </div>
+        <div ng-style="{'background-color'  :(uitheme.bgcolor == 'none'     ?   'darkgray'
+                                            : uitheme.bgcolor == 'success'  ?   'deeppink'
+                                            : uitheme.bgcolor == 'sky'      ?   'darkgoldenrod'
+                                            : uitheme.bgcolor == 'warning'  ?   'greenyellow'
+                                            : uitheme.bgcolor == 'danger'   ?   'darkblue'
+                                            : uitheme.bgcolor == 'night'    ?   'red'
+                                            : 'blue'), 'color': (uitheme.bgcolor == 'none' ? 'black' :'white')}">
+            <h1><span>Hello! I am Div 2</span></h1>
+        </div>
+    </table>
+    <hr>
+    <table width="90%">
+        <tr>
+            <td>
+                <table width="80%">
+                    <tr>
+                        <td width="40%"><h3 style="font-family:Segoe UI;">My Files</h3></td>
+                        <td width="10%"><h3 style="font-family:Segoe UI;">Add Files</h3></td>
+                    </tr>
+                    <tr>
+                        <td width="40%"><input type="checkbox" ng-model="uitheme.hideall"><span
+                                style="font-family:Segoe UI; font-size: 15px">Hide All </span></td>
+                        <td width="1%"><input type="text" ng-model="uitheme.addFile"></td>
+                        <td><input type="button" ng-model="uitheme.addFileButton" value="Add File"
+                                   ng-click="uitheme.addFileFn(uitheme.addFile, uitheme.toAddFolder)"></td>
+                    </tr>
+                    <tr>
+                        <td width="40%"></td>
+                        <td width="40%"><input type="radio" name="folder" value="Personal"
+                                               ng-model="uitheme.toAddFolder"><span
+                                style="font-family:Segoe UI; font-size: 15px">Personal</span>
+                            <input type="radio" name="folder" value="Work" ng-model="uitheme.toAddFolder"><span
+                                    style="font-family:Segoe UI; font-size: 15px">Work</span>
+                            <input type="radio" name="folder" value="Trip" ng-model="uitheme.toAddFolder"><span
+                                    style="font-family:Segoe UI; font-size: 15px">Trip</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li ng-repeat="item in uitheme.items">
+                                    <img src="../../images/folder_small.png"> <span
+                                        style="font-family:Segoe UI; font-size: 15px">{{item.parent}}</span>
+                                    <ul>
+                                        <li ng-repeat="subItem in item.subs" ng-hide="uitheme.hideall">
+                                            <img src="../../images/File_icon.png"> <span
+                                                style="font-family:Segoe UI; font-size: 13px">{{subItem.sub}}</span>
+                                        </li>
+                                    </ul>
+                                    <br/>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+    </table>
+</div>
+</body>
+</html>

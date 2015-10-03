@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="rcangular102">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="uinfocontroller.js"></script>
+
+</head>
+<body>
+
+<div ng-controller="uinfocontroller as uic">
+    <h3>User Info</h3>
+    <table>
+        <tr>
+            <td><span>First:&nbsp;</span></td>
+            <td><span ng-bind="uic.details.firstname" ng-hide="hideme"></span></td>
+            <td><input type="text"
+                       ng-model="uic.details.firstname"
+                       ng-show="hideme"></td>
+        </tr>
+        <tr>
+            <td><span>Last:&nbsp;&nbsp;</span></td>
+            <td><span ng-bind="uic.details.lastname" ng-hide="hideme"></span></td>
+            <td><input type="text"
+                       ng-model="uic.details.lastname"
+                       ng-show="hideme"></td>
+        </tr>
+        <tr>
+            <td><span>Email:&nbsp;&nbsp;</span></td>
+            <td><span ng-bind="uic.details.email" ng-hide="hideme"></span></td>
+            <td><input type="text"
+                       ng-model="uic.details.email"
+                       ng-show="hideme"></td>
+        </tr>
+    </table>
+    <br/><br/>
+    <table>
+        <tr>
+            <td>
+                <button ng-click="uic.copyUser();hideme=true" ng-hide="hideme">Edit</button>
+            </td>
+            <td>
+                <button ng-click="hideme=false" ng-show="hideme">Submit</button>
+            </td>
+            <td>
+                <button ng-click="uic.reset();hideme=false" ng-show="hideme">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
