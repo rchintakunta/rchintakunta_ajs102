@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="rcangular102">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Student Grade Calculator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="gradecontroller.js"></script>
+    <script src="gradeservices.js"></script>
+
+</head>
+<body>
+
+<div ng-controller="gradecontroller as grc">
+
+    <h3>Grade Calculator</h3>
+    <table>
+        <tr>
+            <td><span>Student Name:&nbsp;</span></td>
+            <td><input type="text" ng-model="grc.studentName"></td>
+
+            <td><span ng-bind="grc.studentName"></span></td>
+        </tr>
+        <tr>
+            <td><span>Assignment Name:&nbsp;</span></td>
+
+            <td><input type="text" ng-model="grc.AssignmentDetails.name"></td>
+
+        </tr>
+        <tr>
+            <td><span>Assignment Score:&nbsp;</span></td>
+
+            <td><input type="text" ng-model="grc.AssignmentDetails.score"></td>
+
+        </tr>
+        <tr>
+            <td><input type="button" ng-model="grc.AddAssignmentButton" value="Add Assignment"
+                       ng-click="grc.AddAssignment(grc.AssignmentDetails.name, grc.AssignmentDetails.score)"></td>
+          </tr>
+        <tr><td><br/><br/></td></tr>
+        <br/>
+        <tr>
+            <td>Average:</td>
+            <td><span style="font-family:Segoe UI; font-size: 15px" ng-bind="grc.avg"/></td>
+        </tr>
+        <tr>
+            <td>Grade:</td>
+            <td><span style="font-family:Segoe UI; font-size: 15px" ng-bind="grc.grade"/></td>
+        </tr>
+        <tr>
+            <td>Passing:</td>
+            <td><span style="font-family:Segoe UI; font-size: 15px" ng-bind="grc.status"/></td>
+
+        </tr>
+</table>
+    <table>
+        <tr>
+
+            <td><h5>Assigment Name</h5></td>
+            <td><h5>Assigment Score</h5></td>
+        </tr>
+        <tr
+            ng-repeat="item in grc.assignmentList">
+                <td><span style="font-family:Segoe UI; font-size: 15px" ng-bind="item.assignmentName"/></td>
+                <td><span style="font-family:Segoe UI; font-size: 13px" ng-bind="item.assignmentScore"/></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
