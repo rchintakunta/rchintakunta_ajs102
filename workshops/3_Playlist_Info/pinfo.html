@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="rcangular102">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>PlayList Info</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="pinfocontroller.js"></script>
+    <script src="pinfoservices.js"></script>
+</head>
+<body>
+
+<div ng-controller="pinfocontroller as pic">
+
+    <h3>PlayList Info</h3>
+    <table>
+        <tr>
+            <td><span>Name:&nbsp;</span></td>
+            <td><input type="text" ng-model="pic.personName"></td>
+
+            <td><span ng-bind="pic.personName"></span></td>
+        </tr>
+        <tr>
+            <td><span>Age:&nbsp;</span></td>
+
+            <td><input type="number" name="inputAge" ng-model="pic.personAge"
+                                   min="0" max="99" ng-disabled="pic.allowExplicit=='Explicit'"></td>
+
+            <td width="30%">
+                <table>
+                    <tr>
+                        <td><h4>Genre</h4></td>
+                    </tr>
+                    <tr ng-repeat="item in pic.genre">
+                        <td><input type="radio" name="genreSel" ng-value="{{item.value}}"
+                                   ng-model="pic.genreSelectionSongs"><span>{{item.desc}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td><h4>Allow Explicit?</h4></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="explicitSel" value="Clean"
+                                   ng-model="pic.allowExplicit"><span>Clean</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="explicitSel" value="Explicit"
+                                   ng-model="pic.allowExplicit" ng-disabled="pic.personAge<16"><span>Explicit</span>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+
+            <tr><td><h3>Songs for Genre Selection</h3></td></tr>
+        <tr>
+            <table>
+                <tr ng-repeat="item in pic.genreSelectionSongs">
+                    <td><input type="checkbox" name="{{item.id}}" ng-model="pic.genreSelectionSongs[item.id]"
+                               ng-click="pic.saveSelection(item.id)"><span>{{item.name}}</span>
+                    </td>
+                </tr>
+            </table>
+        </tr>
+        <tr>
+            <td><br/></td>
+        </tr>
+        <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button"
+                                                                       ng-click="pic.submitSongs(pic.allowExplicit)"
+                                                                       value="Submit"></td>
+        </tr>
+        <tr>
+            <td><br/></td>
+        </tr>
+        <tr>
+            <td><br/></td>
+        </tr>
+        <tr>
+            <td><h3>Final Selected Songs</h3></td>
+        </tr>
+        <tr>
+            <table>
+                <tr ng-repeat="item in pic.showSongs">
+                    <td><span>{{item.name}}</span></td>
+                </tr>
+            </table>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
