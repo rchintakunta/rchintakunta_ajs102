@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="rcangular102">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Game Simon</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="gsimoncontroller.js"></script>
+    <script src="gsimonservices.js"></script>
+    <link rel="stylesheet" type="text/css" href="gsimonstyle.css"/>
+</head>
+<body>
+
+<div ng-controller="gsimoncontroller as gsim">
+    <h3 align="center">Game Simon</h3>
+    <h4 align="center">Status:&nbsp;&nbsp;<span style="background-color: greenyellow">{{gsim.messageSimon}}{{gsim.messageUser}}</span></h4>
+    <table align="center">
+        <tr>
+            <td>
+                <input type="button"
+                       ng-click="gsim.startGame()" ng-model="gsim.gameStarted"
+                       value="Start" align="center" style="margin-left: 60%" ng-disabled="gsim.gameStarted==1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/><br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <div id="redBox" class="red" ng-click="gsim.getUserColorClicked('red')"></div>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div>
+                    <div id="blueBox" class="blue" ng-click="gsim.getUserColorClicked('blue')"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <div id="yellowBox" class="yellow" ng-click="gsim.getUserColorClicked('yellow')"></div>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div>
+                    <div id="greenBox" class="green" ng-click="gsim.getUserColorClicked('green')"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><br/><br/><br/></td>
+        </tr>
+
+        <tr>
+            <td><br/><br/><br/></td>
+        </tr>
+        <tr>
+            <td><h3 align="center" style="background-color: aqua">Score:&nbsp;&nbsp;{{gsim.score}}</h3>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

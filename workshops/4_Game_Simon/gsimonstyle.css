@@ -1,0 +1,75 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+.red {
+    height: 10vw;
+    width: 10vw;
+    background: red;
+    display: inline-block;
+    text-align: center;
+    line-height: 5vw;
+    font-size: 4vw;
+    color:red;
+    margin-left: -4px;
+    position: relative;
+}
+
+.red:hover:before {
+    background: rgba(200, 200, 200, 0);
+}
+
+.blue {
+    height: 10vw;
+    width: 10vw;
+    background: blue;
+    display: inline-block;
+    text-align: center;
+    line-height: 5vw;
+    font-size: 4vw;
+    color:blue;
+    margin-left: -4px;
+    position: relative;
+}
+
+
+.blue:hover:before {
+    background: rgba(0, 0, 200, 0);
+}
+
+.yellow {
+    height: 10vw;
+    width: 10vw;
+    background: yellow;
+    display: inline-block;
+    text-align: center;
+    line-height: 5vw;
+    font-size: 4vw;
+    color:yellow;
+    margin-left: -4px;
+    position: relative;
+}
+
+
+.yellow:hover:before {
+    background: rgba(200, 200, 0, 0);
+}
+
+.green {
+    height: 10vw;
+    width: 10vw;
+    background: green;
+    display: inline-block;
+    text-align: center;
+    line-height: 5vw;
+    font-size: 4vw;
+    color:green;
+    margin-left: -4px;
+    position: relative;
+}
+
+
+.green:hover:before {
+    background: rgba(0, 200, 0, 0);
+}
